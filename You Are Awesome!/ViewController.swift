@@ -13,13 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("👍 viewDidLoad has run!")
-        messageLabel.text = "Bonjour!"
+        messageLabel.text = "Welcome!"
     }
 
 
     @IBAction func messageButtonPressed(_ sender: UIButton) {
         print("😎 The Message button was pressed!")
         messageLabel.text = "Hello!!"
+    }
+    @IBAction func anotherButtonPressed(_ sender: UIButton) {
+        print("😀 The Other button was pressed!")
+        messageLabel.text = "Bonjour!!"
     }
 }
 
