@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     var imageNumber = 0
     var messageNumber = 0
+    let totalNumberOfImages = 9
     
       
     
@@ -28,22 +29,24 @@ class ViewController: UIViewController {
                         "Woohoo!",
                         "Great!",
                         "Cool!",
-                        "Awesome!"]
-        messageLabel.text = messages[messageNumber]
-        messageNumber += 1
-        if messageNumber == messages.count {
-            messageNumber = 0
-        }
+                        "The long and winding road, that leads to your door!"]
         
+        messageLabel.text = messages[Int.random(in: 0...messages.count-1)]
+        imageView.image = UIImage(named: "image\(Int.random(in: 0...totalNumberOfImages))")
         
-        print (imageNumber)
-        //  let imageName = "image" + String(imageNumber)
-        let imageName = "image\(imageNumber)"
-        imageView.image = UIImage(named: imageName)
-        imageNumber = imageNumber + 1
-        if imageNumber == 10 {
-            imageNumber = 0
-        }
+//        messageNumber += 1
+//        if messageNumber == messages.count {
+//            messageNumber = 0
+//        }
+
+//        imageNumber = Int.random(in: 0...9)
+//        let imageName = "image\(imageNumber)"
+//        imageView.image = UIImage(named: imageName)
+        
+//        imageNumber = imageNumber + 1
+//        if imageNumber == 10 {
+//            imageNumber = 0
+//        }
         
         
         //        let niceMessage = "Nice!"
