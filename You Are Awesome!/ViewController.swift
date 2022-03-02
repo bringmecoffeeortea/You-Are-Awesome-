@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         messageLabel.text = ""
     }
     
+    func nonRepeatingRandom(originalNumber: Int, upperBounds: Int) -> Int {
+        repeat {
+            newNumber = Int.random(in: 0...upperBounds)
+        } while newNumber == originalNumber
+        return newNumber
+    }
+    
     func playSound(name: String) {
         // read the data in from our assets catalogue
         if let sound = NSDataAsset(name: name) {
@@ -39,14 +46,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func nonRepeatingRandom(originalNumber: Int, upperBounds: Int) -> Int {
-        repeat {
-            newNumber = Int.random(in: 0...upperBounds)
-        } while newNumber == originalNumber
-        return newNumber
-    }
-    
-    
     
     @IBAction func messageButtonPressed(_ sender: UIButton) {
         
@@ -57,39 +56,14 @@ class ViewController: UIViewController {
                         "Cool!",
                         "Yeeee!"]
         
-        
-        var newMessageNumber: Int
-        
-        
-        repeat {
-            newMessageNumber = Int.random(in: 0...messages.count-1)
-        } while messageNumber == newMessageNumber
-        messageNumber = newMessageNumber
+        let messageNumber = nonRepeatingRandom(originalNumber: messageNumber, upperBounds: messages.count-1)
         messageLabel.text = messages[messageNumber]
         
-        
-        var newImageNumber: Int
-        
-        
-        repeat {
-            newImageNumber = Int.random(in: 0...MaxImageNumber)
-        } while imageNumber == newImageNumber
-        imageNumber = newImageNumber
+        let imageNumber = nonRepeatingRandom(originalNumber: imageNumber, upperBounds: MaxImageNumber)
         imageView.image = UIImage(named: "image\(imageNumber)")!
         
-        
-        var newSoundNumber: Int
-        
-        repeat {
-            newSoundNumber = Int.random(in: 0...MaxSoundNumber)
-        } while soundNumber == newSoundNumber
-        soundNumber = newSoundNumber
-        print(soundNumber)
-
+        let soundNumber = nonRepeatingRandom(originalNumber: soundNumber, upperBounds: MaxSoundNumber)
         playSound(name: "sound\(soundNumber)")
-        
-        
-        
     }
 }
 
